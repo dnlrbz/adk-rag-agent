@@ -1,0 +1,20 @@
+{
+  "name": "agent",
+  "version": "1.0.0",
+  "description": "My ADK Agent",
+  "main": "agent.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "npx @google/adk-devtools web",
+    "run": "npx @google/adk-devtools run agent.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@google-cloud/aiplatform": "^6.0.0",
+    "@google-cloud/vertexai": "^1.0.0",
+    "@google/adk": "^0.2.2",
+    "@google/adk-devtools": "^0.2.2"
+  }
+}
