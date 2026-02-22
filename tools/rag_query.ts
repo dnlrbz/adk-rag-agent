@@ -4,11 +4,13 @@
 
 import {FunctionTool, ToolContext} from '@google/adk';
 import {z} from 'zod';
-import {protos, VertexRagServiceClient} from '@google-cloud/aiplatform';
+import {VertexRagServiceClient} from '@google-cloud/aiplatform';
 
 import {DEFAULT_TOP_K, LOCATION, PROJECT_ID,} from '../config';
 import {findBestMatchingCorpus, setCurrentCorpus} from './utils';
 import {buildResponse} from './shared';
+import {google} from "@google-cloud/aiplatform/build/protos/protos";
+import IRetrieveContextsRequest = google.cloud.aiplatform.v1.IRetrieveContextsRequest;
 
 export const ragQuery = new FunctionTool({
     name: 'ragQuery',
@@ -69,7 +71,7 @@ export const ragQuery = new FunctionTool({
 
         try {
             const parent = `projects/${projectId}/locations/${location}`;
-            const request: protos.google.cloud.aiplatform.v1.IRetrieveContextsRequest = {
+            const request: IRetrieveContextsRequest = {
                 parent,
                 vertexRagStore: {
                     ragResources: [

@@ -1,3 +1,7 @@
+import {VertexRagDataServiceClient} from "@google-cloud/aiplatform";
+import {google} from "@google-cloud/aiplatform/build/protos/protos";
+import IImportRagFilesConfig = google.cloud.aiplatform.v1.IImportRagFilesConfig;
+
 export type ToolResult = Record<string, any>;
 
 export function buildResponse(status: 'success' | 'error' | 'info' | 'warning', message: string, extra?: Record<string, any>): ToolResult {
@@ -63,10 +67,10 @@ export function parsePaths(paths: string[]): ParsedPaths {
     return {validated, invalid, conversions, gcsPaths, driveFileIds};
 }
 
-export async function runImportOperations(client: any, parent: string, configs: Array<any>): Promise<number> {
-    const operations: any[] = [];
+export async function runImportOperations(client: VertexRagDataServiceClient, parent: string, configs: Array<IImportRagFilesConfig>): Promise<number> {
+    const operations = [];
     for (const cfg of configs) {
-        const [op] = await client.importRagFiles({ parent, importRagFilesConfig: cfg } as any);
+        const [op] = await client.importRagFiles({ parent, importRagFilesConfig: cfg });
         if (op) operations.push(op);
     }
 

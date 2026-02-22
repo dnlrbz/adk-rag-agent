@@ -4,12 +4,19 @@
 
 import {FunctionTool, ToolContext} from '@google/adk';
 import {z} from 'zod';
-import {DEFAULT_CHUNK_OVERLAP, DEFAULT_CHUNK_SIZE, DEFAULT_EMBEDDING_REQUESTS_PER_MIN, LOCATION, PROJECT_ID} from '../config';
+import {
+    DEFAULT_CHUNK_OVERLAP,
+    DEFAULT_CHUNK_SIZE,
+    DEFAULT_EMBEDDING_REQUESTS_PER_MIN,
+    LOCATION,
+    PROJECT_ID
+} from '../config';
 import {checkCorpusExists, resolveCorpusResourceName, setCurrentCorpus} from './utils';
 import {buildResponse, parsePaths, runImportOperations} from './shared';
 import {VertexClient} from '../vertex-client';
 import {google} from '@google-cloud/aiplatform/build/protos/protos';
 import IRagFileTransformationConfig = google.cloud.aiplatform.v1.IRagFileTransformationConfig;
+import IImportRagFilesConfig = google.cloud.aiplatform.v1.IImportRagFilesConfig;
 
 export const addData = new FunctionTool({
     name: 'addData',
@@ -42,8 +49,7 @@ export const addData = new FunctionTool({
 
             const transform: IRagFileTransformationConfig = { ragFileChunkingConfig: { fixedLengthChunking: { chunkSize: DEFAULT_CHUNK_SIZE, chunkOverlap: DEFAULT_CHUNK_OVERLAP } } };
 
-            const configs: any[] = [];
-            if (pathsInfo.gcsPaths.length) configs.push({ gcsSource: { uris: pathsInfo.gcsPaths }, ragFileTransformationConfig: transform, maxEmbeddingRequestsPerMin: DEFAULT_EMBEDDING_REQUESTS_PER_MIN });
+            const configs: IImportRagFilesConfig[] = [];
             if (pathsInfo.driveFileIds.length) configs.push({ googleDriveSource: { resourceIds: pathsInfo.driveFileIds.map(id => ({ resourceType: google.cloud.aiplatform.v1.GoogleDriveSource.ResourceId.ResourceType.RESOURCE_TYPE_FILE, resourceId: id })) }, ragFileTransformationConfig: transform, maxEmbeddingRequestsPerMin: DEFAULT_EMBEDDING_REQUESTS_PER_MIN });
 
             const totalAdded = await runImportOperations(client, resolved.resourceName, configs);
