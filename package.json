@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "web": "npx @google/adk-devtools web",
-    "run": "npx @google/adk-devtools run agent.ts"
+    "run": "npx @google/adk-devtools run agent.ts",
+    "deploy": "npx adk deploy cloud_run --project=rag-agent-test-481919 --region=europe-central2 --with_ui"
   },
   "devDependencies": {
     "typescript": "^5.9.3"
