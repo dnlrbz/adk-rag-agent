@@ -13,9 +13,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@google-cloud/aiplatform": "^6.0.0",
-    "@google-cloud/vertexai": "^1.0.0",
-    "@google/adk": "^0.2.2",
-    "@google/adk-devtools": "^0.2.2"
+    "@google-cloud/aiplatform": "^6.4.0",
+    "@google-cloud/vertexai": "^1.10.0",
+    "@google/adk": "^0.4.0",
+    "@google/adk-devtools": "^0.4.0"
   }
 }
