@@ -10,7 +10,7 @@ import {instruction} from "./instruction";
 
 export const rootAgent = new LlmAgent({
     name: 'RagAgent',
-    model: 'gemini-2.0-flash-001',
+    model: 'gemini-2.5-flash',
     description: 'Vertex AI RAG Agent',
     tools: [
         ragQuery,
