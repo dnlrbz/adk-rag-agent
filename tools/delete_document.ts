@@ -3,13 +3,14 @@
  */
 
 import {FunctionTool, ToolContext} from '@google/adk';
-import {google} from '@google-cloud/aiplatform/build/protos/protos';
+import {protos} from '@google-cloud/aiplatform';
 import {z} from 'zod';
-import {LOCATION, PROJECT_ID} from '../config';
-import {checkCorpusExists, resolveCorpusResourceName} from './utils';
-import {VertexClient} from '../vertex-client';
-import {buildResponse} from './shared';
-import IDeleteRagFileRequest = google.cloud.aiplatform.v1.IDeleteRagFileRequest;
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {checkCorpusExists, resolveCorpusResourceName} from './utils.js';
+import {VertexClient} from '../vertex-client.js';
+import {buildResponse} from './shared.js';
+
+type IDeleteRagFileRequest = protos.google.cloud.aiplatform.v1.IDeleteRagFileRequest;
 
 export const deleteDocument = new FunctionTool({
     name: 'deleteDocument',

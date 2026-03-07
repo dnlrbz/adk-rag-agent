@@ -4,10 +4,10 @@
 
 import {FunctionTool} from '@google/adk';
 import {z} from 'zod';
-import {LOCATION, PROJECT_ID} from '../config';
-import {VertexClient} from "../vertex-client";
-import {timestampToString,} from './utils';
-import {buildResponse} from './shared';
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {VertexClient} from "../vertex-client.js";
+import {timestampToString,} from './utils.js';
+import {buildResponse} from './shared.js';
 
 export const listCorpora = new FunctionTool({
     name: 'listCorpora',
@@ -25,7 +25,7 @@ export const listCorpora = new FunctionTool({
                 parent: `projects/${PROJECT_ID}/locations/${LOCATION}`,
             }, { maxRetries: 3 });
 
-            const corpusInfo = corpora.map((corpus) => ({
+            const corpusInfo = corpora.map((corpus: any) => ({
                 resource_name: corpus.name || '',
                 display_name: corpus.displayName || '',
                 create_time: timestampToString(corpus.createTime),

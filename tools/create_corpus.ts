@@ -4,13 +4,14 @@
 
 import {FunctionTool, ToolContext} from '@google/adk';
 import {z} from 'zod';
-import {LOCATION, PROJECT_ID} from '../config';
-import {checkCorpusExists, setCurrentCorpus} from './utils';
-import {buildResponse} from './shared';
-import {google} from "@google-cloud/aiplatform/build/protos/protos";
-import {VertexClient} from "../vertex-client";
-import IRagCorpus = google.cloud.aiplatform.v1.IRagCorpus;
-import ICreateRagCorpusRequest = google.cloud.aiplatform.v1.ICreateRagCorpusRequest;
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {checkCorpusExists, setCurrentCorpus} from './utils.js';
+import {buildResponse} from './shared.js';
+import {protos} from "@google-cloud/aiplatform";
+import {VertexClient} from "../vertex-client.js";
+
+type IRagCorpus = protos.google.cloud.aiplatform.v1.IRagCorpus;
+type ICreateRagCorpusRequest = protos.google.cloud.aiplatform.v1.ICreateRagCorpusRequest;
 
 export const createCorpus = new FunctionTool({
     name: 'createCorpus',

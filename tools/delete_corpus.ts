@@ -4,12 +4,13 @@
 
 import {FunctionTool, ToolContext} from '@google/adk';
 import {z} from 'zod';
-import {LOCATION, PROJECT_ID} from '../config';
-import {checkCorpusExists, invalidateCorpusExistsState, resolveCorpusResourceName} from './utils';
-import {VertexClient} from '../vertex-client';
-import {google} from '@google-cloud/aiplatform/build/protos/protos';
-import {buildResponse} from './shared';
-import IDeleteRagCorpusRequest = google.cloud.aiplatform.v1.IDeleteRagCorpusRequest;
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {checkCorpusExists, invalidateCorpusExistsState, resolveCorpusResourceName} from './utils.js';
+import {VertexClient} from '../vertex-client.js';
+import {protos} from '@google-cloud/aiplatform';
+import {buildResponse} from './shared.js';
+
+type IDeleteRagCorpusRequest = protos.google.cloud.aiplatform.v1.IDeleteRagCorpusRequest;
 
 export const deleteCorpus = new FunctionTool({
     name: 'deleteCorpus',

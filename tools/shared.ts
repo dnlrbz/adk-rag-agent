@@ -1,6 +1,6 @@
-import {VertexRagDataServiceClient} from "@google-cloud/aiplatform";
-import {google} from "@google-cloud/aiplatform/build/protos/protos";
-import IImportRagFilesConfig = google.cloud.aiplatform.v1.IImportRagFilesConfig;
+import {protos, VertexRagDataServiceClient} from "@google-cloud/aiplatform";
+
+type IImportRagFilesConfig = protos.google.cloud.aiplatform.v1.IImportRagFilesConfig;
 
 export type ToolResult = Record<string, any>;
 

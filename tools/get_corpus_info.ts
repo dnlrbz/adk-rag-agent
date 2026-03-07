@@ -4,10 +4,10 @@
 
 import {FunctionTool, ToolContext} from '@google/adk';
 import {z} from 'zod';
-import {LOCATION, PROJECT_ID} from '../config';
-import {checkCorpusExists, resolveCorpusResourceName, timestampToString} from './utils';
-import {VertexClient} from '../vertex-client';
-import {buildResponse} from './shared';
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {checkCorpusExists, resolveCorpusResourceName, timestampToString} from './utils.js';
+import {VertexClient} from '../vertex-client.js';
+import {buildResponse} from './shared.js';
 
 export const getCorpusInfo = new FunctionTool({
     name: 'getCorpusInfo',

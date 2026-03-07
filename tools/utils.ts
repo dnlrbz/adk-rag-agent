@@ -3,8 +3,8 @@
  */
 
 import {ToolContext} from '@google/adk';
-import {LOCATION, PROJECT_ID} from '../config';
-import {VertexClient} from "../vertex-client";
+import {LOCATION, PROJECT_ID} from '../config.js';
+import {VertexClient} from "../vertex-client.js";
 import {protos} from '@google-cloud/aiplatform';
 
 /**

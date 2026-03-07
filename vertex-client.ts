@@ -1,5 +1,5 @@
 import {VertexRagDataServiceClient} from "@google-cloud/aiplatform";
-import {LOCATION, PROJECT_ID} from "./config";
+import {LOCATION, PROJECT_ID} from "./config.js";
 
 export class VertexClient {
     private client?: VertexRagDataServiceClient;
